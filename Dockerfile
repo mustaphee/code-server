@@ -24,6 +24,9 @@ RUN yarn \
 # We deploy with ubuntu so that devs have a familiar environment.
 FROM ubuntu:18.04
 
+ENV DEBIAN_FRONTEND noninteractive
+ENV TZ UTC
+
 RUN apt-get update && apt-get install -y \
 	openssl \
 	net-tools \
@@ -33,7 +36,11 @@ RUN apt-get update && apt-get install -y \
 	dumb-init \
 	vim \
 	curl \
-	wget
+	wget \
+	jq \
+	php-mysql \
+	phpunit \
+	subversion
 
 RUN locale-gen en_US.UTF-8
 # We cannot use update-locale because docker will not use the env variables
