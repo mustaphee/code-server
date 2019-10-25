@@ -29,6 +29,9 @@ ENV TZ UTC
 
 RUN apt-get update && apt-get install -y \
 	openssl \
+	gcc \
+	g++ \
+	make \
 	net-tools \
 	git \
 	locales \
@@ -41,6 +44,8 @@ RUN apt-get update && apt-get install -y \
 	php-mysql \
 	phpunit \
 	subversion
+
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && apt-get install -y nodejs
 
 RUN locale-gen en_US.UTF-8
 # We cannot use update-locale because docker will not use the env variables
