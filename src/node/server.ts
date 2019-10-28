@@ -214,7 +214,7 @@ export abstract class Server {
 
 	protected withBase(request: http.IncomingMessage, path: string): string {
 		const [, query] = request.url ? split(request.url, "?") : [];
-		return `${this.protocol}://${request.headers.host}${this.options.basePath}${path}${query ? `?${query}` : ""}`;
+		return `${this.options.basePath}${path}${query ? `?${query}` : ""}`;
 	}
 
 	private isAllowedRequestPath(path: string): boolean {
