@@ -14,7 +14,7 @@
 				default-src 'self';
 				img-src 'self' https: data: blob:;
 				media-src 'none';
-				script-src 'self' 'unsafe-eval' https: 'sha256-bpJydy1E+3Mx9MyBtkOIA3yyzM2wdyIz115+Sgq21+0=' 'sha256-meDZW3XhN5JmdjFUrWGhTouRKBiWYtXHltaKnqn/WMo=';
+				script-src 'self' 'unsafe-eval' https: 'sha256-bpJydy1E+3Mx9MyBtkOIA3yyzM2wdyIz115+Sgq21+0=' 'sha256-meDZW3XhN5JmdjFUrWGhTouRKBiWYtXHltaKnqn/WMo=' 'sha256-zoDoXU8xLCwdI/DxQWcoZ/iv7YBSKAWm3V5nAgkhBEA=';
 				child-src 'self';
 				frame-src 'self';
 				worker-src 'self';
@@ -48,6 +48,14 @@
 
 	<body aria-label="">
 	</body>
+
+	<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+	<script>
+		window.TrackJS && TrackJS.install({
+			token: "5bff308f91be49c9ba1c1d2155252f8f"
+			// for more configuration options, see https://docs.trackjs.com
+		});
+	</script>
 
 	<!-- Startup (do not modify order of script tags!) -->
 	<!-- NOTE:coder: Modified to work against the current path and use the commit for caching. -->
