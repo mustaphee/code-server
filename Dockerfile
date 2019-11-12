@@ -45,7 +45,17 @@ RUN apt-get update && apt-get install -y \
 	phpunit \
 	subversion
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
+RUN curl -O https://getcomposer.org/download/1.9.1/composer.phar && chmod +x composer.phar && mv composer.phar /usr/local/bin/composer
+RUN curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod +x phpcs.phar && mv phpcs.phar /usr/local/bin/phpcs
+RUN curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar && chmod +x phpcbf.phar && mv phpcbf.phar /usr/local/bin/phpcbf
+RUN git clone -b master https://github.com/WordPress/WordPress-Coding-Standards.git wpcs && mv wpcs /usr/local/lib/wpcs
+RUN phpcs --config-set installed_paths /usr/local/lib/wpcs
+
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && apt-get install -y nodejs
+
+RUN npm install -g eslint babel-eslint
+RUN npm install -g "git+https://github.com/Automattic/wp-prettier.git#wp-prettier-1.18.2"
 
 RUN locale-gen en_US.UTF-8
 # We cannot use update-locale because docker will not use the env variables
