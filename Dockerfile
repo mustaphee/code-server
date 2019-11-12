@@ -54,7 +54,7 @@ RUN phpcs --config-set installed_paths /usr/local/lib/wpcs
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && apt-get install -y nodejs
 
-RUN npm install -g eslint babel-eslint
+RUN npm install -g eslint babel-eslint eslint-plugin-prettier eslint-plugin-react eslint-plugin-jest eslint-config-wpcalypso eslint-plugin-wpcalypso jest
 RUN npm install -g "git+https://github.com/Automattic/wp-prettier.git#wp-prettier-1.18.2"
 
 RUN locale-gen en_US.UTF-8
